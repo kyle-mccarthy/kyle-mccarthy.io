@@ -44,7 +44,11 @@ const Typography: FC<Props> = ({
 
   const Component: React.ReactType = variantMap[variant] || 'span';
   const variantStyles = theme.typography[variant] || {};
-  const styles: CSSObject = {};
+  const styles: CSSObject = {
+    ['& a']: {
+      color: theme.colors.primary.toString() as string
+    }
+  };
 
   if (color && color !== 'default') {
     styles.color = theme.emphasis(theme.colors[color]);

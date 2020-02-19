@@ -3,12 +3,17 @@ import { useTheme } from '../types';
 import Typography from '../components/Typography';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
-import Button from '../components/Button';
+import Head from 'next/head';
 
 const Home: FC = () => {
   const theme = useTheme();
   return (
     <Layout>
+      <Head>
+        <title>
+          Kyle McCarthy | Full Stack Software Engineer | St. Louis, MO
+        </title>
+      </Head>
       <div
         css={{
           display: 'flex',
@@ -24,64 +29,24 @@ const Home: FC = () => {
               alignItems: 'center'
             }}
           >
-            <Section title="example">
+            <Section title="Work In Progress">
               <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </Typography>
-              <Typography>
-                Ornare quam viverra orci sagittis eu volutpat odio facilisis.
-                Facilisi etiam dignissim diam quis enim lobortis scelerisque
-                fermentum. Duis at consectetur lorem donec massa sapien. Mi
-                bibendum neque egestas congue quisque egestas diam. Vitae congue
-                eu consequat ac. Feugiat in fermentum posuere urna nec
-                tincidunt.
+                This is my personal site that is very much still a work in
+                progress. If you would like to contact me, connect with me
+                on&nbsp;
+                <a href="https://www.linkedin.com/in/kyle-mccarthy">LinkedIn</a>
+                !
               </Typography>
 
-              <div
-                css={{
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  marginTop: theme.spacing(3)
-                }}
-              >
-                <Button>READ MORE</Button>
-              </div>
-            </Section>
-
-            <Section title="example">
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </Typography>
-              <Typography>
-                Ornare quam viverra orci sagittis eu volutpat odio facilisis.
-                Facilisi etiam dignissim diam quis enim lobortis scelerisque
-                fermentum. Duis at consectetur lorem donec massa sapien. Mi
-                bibendum neque egestas congue quisque egestas diam. Vitae congue
-                eu consequat ac. Feugiat in fermentum posuere urna nec
-                tincidunt.
-              </Typography>
-
-              <div
-                css={{
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  marginTop: theme.spacing(3)
-                }}
-              >
-                <Button>READ MORE</Button>
-              </div>
+              {/* <div */}
+              {/*   css={{ */}
+              {/*     display: 'flex', */}
+              {/*     justifyContent: 'flex-end', */}
+              {/*     marginTop: theme.spacing(3) */}
+              {/*   }} */}
+              {/* > */}
+              {/*   <Button>READ MORE</Button> */}
+              {/* </div> */}
             </Section>
           </div>
         </div>

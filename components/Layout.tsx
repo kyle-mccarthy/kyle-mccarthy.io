@@ -1,8 +1,6 @@
 import { FC } from 'react';
 import { useTheme } from '../types';
-import Typography from './Typography';
-import { FaLinkedinIn, FaGithub, FaRegEnvelope } from 'react-icons/fa';
-import { MdLocationOn } from 'react-icons/md';
+import Emblem from '../components/Emblem';
 import Sidebar from './Sidebar';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
@@ -64,7 +62,14 @@ const Layout: FC = ({ children }) => {
         >
           <Sidebar />
         </div>
-        <div css={{ background: theme.elevation[2] }}>
+        <div
+          css={{
+            background: theme.elevation[2],
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+          }}
+        >
           <div
             css={{
               margin: theme.spacing(0, 10),
@@ -74,6 +79,9 @@ const Layout: FC = ({ children }) => {
             }}
           >
             {children}
+          </div>
+          <div css={{ display: 'flex', justifyContent: 'center' }}>
+            <Emblem width={75} color="#000000" />
           </div>
         </div>
       </div>
