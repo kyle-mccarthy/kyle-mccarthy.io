@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "ANALYZE=true yarn build"
   },
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
@@ -18,9 +19,11 @@
     "normalize.css": "^8.0.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "react-icons": "^3.9.0"
+    "react-icons": "^3.9.0",
+    "react-obfuscate": "^3.6.6"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^9.2.1",
     "@types/node": "^13.7.1",
     "@types/react": "^16.9.19",
     "@typescript-eslint/eslint-plugin": "^2.19.2",

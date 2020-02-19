@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "types": ["@emotion/core"]
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "types"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

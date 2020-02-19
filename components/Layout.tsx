@@ -3,6 +3,7 @@ import { useTheme } from '../types';
 import Typography from './Typography';
 import { FaLinkedinIn, FaGithub, FaRegEnvelope } from 'react-icons/fa';
 import { MdLocationOn } from 'react-icons/md';
+import Sidebar from './Sidebar';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   icon: React.ReactElement;
@@ -61,81 +62,14 @@ const Layout: FC = ({ children }) => {
             }
           }}
         >
-          <Typography
-            css={{
-              fontSize: 24,
-              letterSpacing: 2.4,
-              marginBottom: theme.spacing(4)
-            }}
-            variant="span"
-            align="center"
-          >
-            KYLE MCCARTHY
-          </Typography>
-          <div
-            css={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginBottom: theme.spacing(4)
-            }}
-          >
-            <img
-              src="/assets/me-headshot.jpg"
-              width="200"
-              css={{ borderRadius: '50%' }}
-              alt="Kyle McCarthy Picture"
-            />
-          </div>
-
-          <div
-            css={{
-              marginBottom: theme.spacing(1.5),
-              fontSize: 20,
-              display: 'flex',
-              justifyContent: 'center',
-              ['& > *']: {
-                marginLeft: theme.spacing(1),
-                marginRight: theme.spacing(1)
-              },
-              ['& > a']: {
-                color: theme.emphasis(theme.colors.white)
-              }
-            }}
-          >
-            <a
-              href="https://www.linkedin.com/in/kyle-mccarthy"
-              title="https://www.linkedin.com/in/kyle-mccarthy"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <FaLinkedinIn />
-            </a>
-            <a
-              href="https://github.com/kyle-mccarthy"
-              title="https://github.com/kyle-mccarthy"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <FaGithub />
-            </a>
-
-            <a href="#">
-              <FaRegEnvelope />
-            </a>
-          </div>
-
-          <div css={{ marginBottom: theme.spacing(2) }}>
-            <Item icon={<MdLocationOn />}>St. Louis, MO</Item>
-            {/* <Item icon={<FaLinkedinIn />}>/in/kyle-mccarthy</Item> */}
-            {/* <Item icon={<FaGithub />}>@kyle-mccarthy</Item> */}
-          </div>
+          <Sidebar />
         </div>
         <div css={{ background: theme.elevation[2] }}>
           <div
             css={{
               margin: theme.spacing(0, 10),
               [theme.breakpoints.up('md')]: {
-                marginTop: theme.spacing(10)
+                margin: theme.spacing(7, 5, 0)
               }
             }}
           >
