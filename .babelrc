@@ -1,4 +1,14 @@
 {
-  "presets": ["next/babel", "@emotion/babel-preset-css-prop"],
-  "plugins": ["@babel/plugin-proposal-optional-chaining"]
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-react": {
+          "runtime": "automatic",
+          "importSource": "theme-ui"
+        }
+      }
+    ]
+  ],
+  "plugins": ["@emotion/babel-plugin"]
 }

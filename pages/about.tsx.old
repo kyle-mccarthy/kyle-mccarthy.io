@@ -1,0 +1,136 @@
+import { FC } from 'react';
+import Typography from '../components/Typography';
+import Layout from '../components/Layout';
+import Section from '../components/Section';
+import Head from 'next/head';
+import { useTheme } from '../types';
+
+const Home: FC = () => {
+  const theme = useTheme();
+
+  const tech = [
+    {
+      title: 'Languages'
+    },
+    {
+      title: 'Databases',
+      items: ['Postgres', 'Maria DB', 'Redis', 'BigQuery', 'Elasticsearch']
+    },
+    {
+      title: 'Frameworks',
+      items: [
+        'React',
+        'Next.js',
+        'Nest.js',
+        'Laravel',
+        'Actix Web',
+        'Redux',
+        'Mobx'
+      ]
+    }
+  ];
+
+  return (
+    <Layout>
+      <Head>
+        <title>
+          About Kyle McCarthy | Full Stack Software Engineer | St. Louis, MO
+        </title>
+      </Head>
+      <div
+        css={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        <div>
+          <div
+            css={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}
+          >
+            <Section title="About Me">
+              <Typography>
+                Hi, I am Kyle McCarthy. I am a Full Stack Software Engineer
+                living in St. Louis, Missouri. I specialize in Web Development
+                using TypeScript, React, Node.js and SQL. Additionally, I am
+                very interested in Rust!
+              </Typography>
+
+              <Typography>
+                I enjoy solving complex and difficult problems, learning and
+                writing clean, scalable and maintainable software. I have a B.S.
+                in Computer Science and a minor in Mathmatics from the
+                University of Missouri - Columbia. If I am not working or
+                programming, you will likely find me spending time with my wife
+                and two dogs.
+              </Typography>
+            </Section>
+
+            <Section title="Technology & Tools">
+              <div css={{ marginTop: theme.spacing(3) }}>
+                {tech.map(section => (
+                  <div
+                    key={section.title}
+                    css={{ marginBottom: theme.spacing(2.25) }}
+                  >
+                    <div css={{ display: 'flex' }}>
+                      <div
+                        css={{
+                          display: 'flex',
+                          borderBottom: `solid 0.75px ${theme.colors.secondary
+                            .setAlpha(0.8)
+                            .toString() as string}`,
+                          marginBottom: theme.spacing(0.75),
+                          paddingBottom: 2
+                        }}
+                      >
+                        <Typography
+                          variant="h3"
+                          css={{
+                            fontWeight: 300,
+                            fontSize: 12,
+                            marginBottom: 4
+                          }}
+                        >
+                          {section.title}
+                        </Typography>
+                      </div>
+                    </div>
+                    <ul
+                      css={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        paddingLeft: 0,
+                        marginTop: 4,
+                        marginBottom: 0
+                      }}
+                    >
+                      {section.items.map(item => (
+                        <li
+                          key={item}
+                          css={{
+                            display: 'flex',
+                            listStyle: 'none',
+                            flexBasis: '25%',
+                            marginBottom: 4
+                          }}
+                        >
+                          - {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </Section>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default Home;

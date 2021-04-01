@@ -1,58 +1,72 @@
 import { FC } from 'react';
-import { useTheme } from '../types';
-import Typography from '../components/Typography';
-import Layout from '../components/Layout';
-import Section from '../components/Section';
-import Head from 'next/head';
+import { Text, Link } from 'theme-ui';
+import PreviewPost from '../components/PreviewPost';
+import { Divider, Grid } from 'theme-ui';
 
 const Home: FC = () => {
-  const theme = useTheme();
   return (
-    <Layout>
-      <Head>
-        <title>
-          Kyle McCarthy | Full Stack Software Engineer | St. Louis, MO
-        </title>
-      </Head>
-      <div
-        css={{
-          display: 'flex',
-          justifyContent: 'center',
-          margin: `${theme.spacing(5)}px auto`
-        }}
-      >
-        <div>
+    <div>
+      <Grid gap={2} columns={['1fr 25px 1fr']}>
+        <PreviewPost />
+        <div
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+          }}
+        >
           <div
-            css={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center'
+            sx={{
+              maxWidth: 1,
+              backgroundColor: 'muted',
+              width: 1,
+              flexGrow: 1,
             }}
-          >
-            <Section title="Work In Progress">
-              <Typography>
-                This is my personal site that is very much still a work in
-                progress. If you would like to contact me, connect with me
-                on&nbsp;
-                <a href="https://www.linkedin.com/in/kyle-mccarthy">LinkedIn</a>
-                !
-              </Typography>
-
-              {/* <div */}
-              {/*   css={{ */}
-              {/*     display: 'flex', */}
-              {/*     justifyContent: 'flex-end', */}
-              {/*     marginTop: theme.spacing(3) */}
-              {/*   }} */}
-              {/* > */}
-              {/*   <Button>READ MORE</Button> */}
-              {/* </div> */}
-            </Section>
-          </div>
+          />
         </div>
-      </div>
-    </Layout>
+        <PreviewPost />
+      </Grid>
+    </div>
   );
+  // return (
+  //   <Layout>
+  //     <Head>
+  //       <title>
+  //         Kyle McCarthy | Full Stack Software Engineer | St. Louis, MO
+  //       </title>
+  //     </Head>
+  //     <div
+  //       css={{
+  //         display: 'flex',
+  //         justifyContent: 'center'
+  //       }}
+  //     >
+  //       <div
+  //         css={{
+  //           display: 'flex',
+  //           flexDirection: 'column',
+  //           alignItems: 'center',
+  //           width: '100%'
+  //         }}
+  //       >
+  //         <Section title="Blog Post">
+  //           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  //           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+  //           ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  //           aliquip ex ea commodo consequat. Duis aute irure dolor in
+  //           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+  //           pariatur.
+  //         </Section>
+  //       </div>
+  //     </div>
+  //   </Layout>
+  // );
 };
+
+// export async function getServerSideProps(_context: any): Promise<any> {
+//   return {
+//     props: {},
+//   };
+// }
 
 export default Home;

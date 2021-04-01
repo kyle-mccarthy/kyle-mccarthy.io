@@ -1,145 +1,112 @@
+// import { dark } from '@theme-ui/presets';
+import type { Theme } from 'theme-ui';
 import { TinyColor } from '@ctrl/tinycolor';
+import { dark } from '@theme-ui/presets';
+import { merge } from 'theme-ui';
 
-const background = new TinyColor('#121212');
-const border = new TinyColor('#343434');
-const error = new TinyColor('#CF6679');
-const black = new TinyColor('#000000');
-const white = new TinyColor('#FFFFFF');
-const breakpoints = {
-  xs: 0,
-  sm: 600,
-  md: 960,
-  lg: 1280,
-  xl: 1920
+export const colors = {
+  background: new TinyColor('#1C2227'),
+  text: new TinyColor('#E7E7ED'),
+  // primary: new TinyColor('#F76A75'),
+  primary: new TinyColor('#E44740'),
+  accent: new TinyColor('#FFCA00'),
+
+  muted: new TinyColor('#586269'),
 };
 
-const primary = new TinyColor('#5ed2ec');
-const secondary = new TinyColor('#5eecbf');
-
-const emphasisMap = { main: 0.87, secondary: 0.6, disabled: 0.38 };
-
-const spacing = (...args: number[]) => {
-  if (args.length === 1) {
-    return args[0] * 8;
-  }
-  return args.map(a => `${a * 8}px`).join(' ');
+export const pallete = {
+  background: colors.background.toHexString(),
+  text: colors.text.toHexString(),
+  primary: colors.primary.toHexString(),
+  accent: colors.accent.toHexString(),
+  muted: colors.background.lighten(15).toHexString(),
 };
 
-// text contrast should be 15.8:1
-// standard is 4.5:1
-
-export const theme = {
-  background: {
-    color: background,
-    main: background.toHexString()
+const theme: Theme = merge.all(dark, {
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  colors: pallete,
+  fonts: {
+    body: "'Raleway', Arial, Helvetica, sans-serif",
+    heading: "'Fuji', Arial, Helvetica, sans-serif",
+    monospace: "'Victor Mono', Menlo monospace",
   },
-  colors: {
-    white,
-    primary,
-    secondary
+  fontWeights: {
+    body: 400,
   },
-  elevation: {
-    0: background.lighten(0).toHexString(),
-    1: background.lighten(3).toHexString(),
-    2: background.lighten(5).toHexString(),
-    3: background.lighten(7).toHexString(),
-    5: background.lighten(8).toHexString(),
-    6: background.lighten(9).toHexString(),
-    // 5: background.lighten(10).toHexString(),
-    8: background.lighten(11).toHexString(),
-    // 7: background.lighten(11.5).toHexString(),
-    12: background.lighten(12).toHexString(),
-    // 9: background.lighten(12.5).toHexString(),
-    // 10: background.lighten(13).toHexString(),
-    // 11: background.lighten(13.5).toHexString(),
-    16: background.lighten(14).toHexString(),
-    // 13: background.lighten(14.25).toHexString(),
-    // 14: background.lighten(14.5).toHexString(),
-    // 15: background.lighten(14.75).toHexString(),
-    18: background.lighten(15).toHexString(),
-    24: background.lighten(16).toHexString()
+  fontSize: {
+    body: 16,
   },
-  pallete: {
-    background: {
-      main: background.toHexString(),
-      on: white.toHexString()
+  styles: {
+    root: {
+      fontFamily: 'body',
+      fontWeight: 'body',
+      lineHeight: 'body',
+      fontSize: 'body',
     },
-    surface: {
-      main: background.toHexString(),
-      on: white.toHexString()
+    a: {
+      // color: colors.red.toHexString(),
+      display: 'inline-flex',
+      alignItems: 'center',
     },
-    error: {
-      main: error.toHexString(),
-      on: black.toHexString()
+    hr: {
+      color: 'muted',
     },
-    primary: {
-      on: black.toHexString()
-    }
   },
-  text: {
-    /* high: white.mix(background, 13).toHexString(), */
-    /* medium: white.mix(background, 40).toHexString(), */
-    /* disabled: white.mix(background, 62).toHexString() */
-    main: white.setAlpha(0.87).toString() as string,
-    secondary: white.setAlpha(0.6).toString() as string,
-    disabled: white.setAlpha(0.38).toString() as string
-  },
-  emphasis: (
-    color: TinyColor,
-    variant: 'main' | 'secondary' | 'disabled' = 'main'
-  ) => {
-    return color.setAlpha(emphasisMap[variant]).toString() as string;
-  },
-  alpha: (color: TinyColor, alpha: number) => {
-    return color.setAlpha(alpha);
-  },
-  breakpoints: {
-    values: breakpoints,
-    down: (bp: 'xs' | 'sm' | 'md' | 'lg' | number) =>
-      `@media(min-width: ${typeof bp === 'string' ? breakpoints[bp] : bp}px)`,
-    up: (bp: 'xs' | 'sm' | 'md' | 'lg' | number) =>
-      `@media(max-width: ${typeof bp === 'string' ? breakpoints[bp] : bp}px)`
-  },
-  spacing,
-  typography: {
-    h1: {
-      marginTop: 0
-    },
-    h2: {
-      marginTop: 0
-    },
-    h3: {
-      marginTop: 0
-    },
-    h4: {
-      marginTop: 0
-    },
-    h5: {
-      marginTop: 0
-    },
-    h6: {
-      marginTop: 0
+  layout: {
+    container: {
+      maxWidth: 1024,
     },
     body: {
-      marginTop: 0,
-      lineHeight: 1.35,
-      fontWeight: 300
+      // background: '#1f1f1f',
+      minHeight: '100vh',
+      display: 'flex',
     },
-    body2: { marginTop: 0 },
-    span: {
-      marginTop: 0,
-
-      display: 'block'
+    sidebar: {
+      // background: '#1a1a1a',
+      padding: '48px 32px',
+      maxWidth: 320,
     },
-    subtitle2: {
-      marginTop: 0,
-      textTransform: 'uppercase',
-      fontSize: 14,
-      fontWeight: 800,
-      letterSpacing: 1
-    }
+    content: {
+      margin: '20px 80px',
+    },
   },
-  divider: white.setAlpha(0.24).toString() as string
-};
+  post: {
+    container: {
+      paddingTop: 4,
+      paddingBottom: 4,
+    },
+    title: {
+      fontSize: 7,
+      display: 'block',
+      marginBottom: 3,
+      // color: 'primary',
+      fontFamily: 'heading',
+      lineHeight: 0.85,
+      maxWidth: '600px',
+      color: colors.primary.toRgbString(),
+      textShadow: `3px 3px 0px ${colors.background.lighten(10).toRgbString()}`,
+      // color: colors.accent.toRgbString(),
+      // textShadow: `4px 4px 0px ${colors.primary.toHexString()}`,
+    },
+    meta: {
+      fontSize: 0,
+      marginBottom: 3,
+      display: 'block',
+      color: colors.text.setAlpha(0.8).toRgbString(),
+    },
+    summary: {
+      marginBottom: 3,
+      fontSize: 2,
+      display: 'block',
+    },
+    link: {
+      fontSize: 1,
+      color: 'accent',
+      ['& > a']: {
+        color: 'inherit',
+      },
+    },
+  },
+}) as Theme;
 
 export default theme;

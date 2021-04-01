@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "packages": {
+    "mdcms_js": {
+      "signature": "fd3979b215ede3602a7b524dd0f5e9a2",
+      "file": true
+    },
+    "mdcms_node": {
+      "signature": "255d247d7975a61af5bd844f9e3e0d37",
+      "file": true
+    }
+  }
+}

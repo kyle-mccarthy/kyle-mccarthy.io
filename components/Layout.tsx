@@ -1,91 +1,45 @@
 import { FC } from 'react';
-import { useTheme } from '../types';
-import Emblem from '../components/Emblem';
+import { Container, Divider } from 'theme-ui';
 import Sidebar from './Sidebar';
+import { colors } from '../theme';
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  icon: React.ReactElement;
-}
-
-const Item: FC<Props> = ({ icon, children, ...rest }) => {
-  const theme = useTheme();
-  return (
-    <div
-      css={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 12,
-        lineHeight: 1
-      }}
-      {...rest}
-    >
-      <span
-        css={{ fontSize: 18, display: 'flex', marginRight: theme.spacing(1) }}
-      >
-        {icon}
-      </span>
-      <span css={{ fontSize: 12, lineHeight: 1 }}>{children}</span>
-    </div>
-  );
-};
+//              `3px 0px 0px #E26D3C, 0px -3px 0 #C7AD48, 0px 3px 0px #5498D5`,
 
 const Layout: FC = ({ children }) => {
-  const theme = useTheme();
   return (
-    <div
-      css={{
-        height: '100vh',
-        width: theme.breakpoints.values.lg,
-        margin: '0 auto'
-      }}
-    >
+    <Container variant="container">
       <div
-        css={{
-          display: 'grid',
-          gridTemplateColumns: '320px 1fr',
-          height: '100%',
-          [theme.breakpoints.up('md')]: {
-            display: 'flex',
-            flexDirection: 'column'
-          }
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          padding: '75px 0 0',
         }}
       >
         <div
-          css={{
-            background: theme.elevation[1],
-            padding: theme.spacing(6, 4),
-            [theme.breakpoints.up('md')]: {
-              order: 2
-            }
+          sx={{
+            fontSize: 120,
+            lineHeight: 0.9,
+            textShadow: (theme) =>
+              `4px 4px 0px ${colors.background.lighten(
+                25
+              )}, 8px 8px 0px ${colors.background.lighten(15)} `,
+            // `3px 0px 0px #E26D3C, 0px -3px 0 #C7AD48, 0px 3px 0px #5498D5`,
+            fontFamily: 'Special3',
+            textTransform: 'uppercase',
+            //fontVariationSettings: '"wght" 900, "wdth" 104',
           }}
         >
-          <Sidebar />
-        </div>
-        <div
-          css={{
-            background: theme.elevation[2],
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between'
-          }}
-        >
-          <div
-            css={{
-              margin: theme.spacing(0, 10),
-              [theme.breakpoints.up('md')]: {
-                margin: theme.spacing(7, 5, 0)
-              }
-            }}
-          >
-            {children}
-          </div>
-          <div css={{ display: 'flex', justifyContent: 'center' }}>
-            <Emblem width={75} color="#000000" />
-          </div>
+          Kyle
+          <br />
+          McCarthy
         </div>
       </div>
-    </div>
+
+      <Divider sx={{ margin: '50px 0 25px' }} />
+
+      <Container>{children}</Container>
+    </Container>
   );
 };
 

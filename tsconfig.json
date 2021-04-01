@@ -13,8 +13,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "types": ["@emotion/core"]
+    "types": ["node", "@emotion/react"]
   },
-  "exclude": ["node_modules", "types"],
+  "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

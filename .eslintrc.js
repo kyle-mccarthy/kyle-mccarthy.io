@@ -4,7 +4,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 0,
@@ -12,12 +12,12 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'no-unused-vars': [
       'error',
-      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
+      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
     '@typescript-eslint/no-unused-vars': [
       'error',
-      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
+      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
-    '@typescript-eslint/no-explicit-any': 0
-  }
+    '@typescript-eslint/no-explicit-any': 0,
+  },
 };

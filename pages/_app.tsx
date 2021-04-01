@@ -1,35 +1,89 @@
 import App from 'next/app';
-import { Global } from '@emotion/core';
-import AppContext from '../components/AppContext';
+import { ThemeProvider } from 'theme-ui';
+import Layout from '../components/Layout';
 import theme from '../theme';
-import Head from 'next/head';
-import 'normalize.css';
+import 'victormono';
+import '@fontsource/raleway';
+import '@fontsource/raleway/800.css';
 
-export default class MyApp extends App {
-  public render() {
+export class AppExt extends App {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  render() {
     const { Component, pageProps } = this.props;
 
     return (
       <>
-        <Head>
-          <link
-            href="https://fonts.googleapis.com/css?family=Muli:300,400,500,700,800&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
-        <Global
-          styles={{
-            body: {
-              background: theme.background.main,
-              color: theme.text.main,
-              fontFamily: "'Muli', sans-serif"
+        <style global jsx>
+          {`
+            @font-face {
+              font-family: 'Fuji';
+              src: url('/assets/fonts/Fuji-Regular.woff');
+              font-style: normal;
+              font-weight: 400;
+              font-display: swap;
             }
-          }}
-        />
-        <AppContext>
-          <Component {...pageProps} />
-        </AppContext>
+
+            @font-face {
+              font-family: 'Fuji';
+              src: url('/assets/fonts/Fuji-Medium.woff');
+              font-style: normal;
+              font-weight: 500;
+              font-display: swap;
+            }
+
+            @font-face {
+              font-family: 'Fuji';
+              src: url('/assets/fonts/Fuji-Bold.woff');
+              font-style: normal;
+              font-weight: 600;
+              font-display: swap;
+            }
+
+            @font-face {
+              font-family: 'Special';
+              src: url('/assets/pangram/Fuji-Bold.woff');
+              font-style: normal;
+              font-weight: 400;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: 'Special3';
+              src: url('/assets/pangram/Stellar-Bold.otf');
+              font-style: normal;
+              font-weight: 400;
+              font-display: swap;
+            }
+
+            @font-face {
+              font-family: 'Special2';
+              src: url('/assets/pangram/bitmap/NeueBit-Bold.woff');
+              font-style: normal;
+              font-weight: 600;
+              font-display: swap;
+            }
+
+            @font-face {
+              font-family: 'Special4';
+              src: url('/assets/pangram/bitmap/Mondwest-Bold.woff');
+              font-style: normal;
+              font-weight: 600;
+              font-display: swap;
+            }
+
+            @font-face {
+              font-family: 'Alt';
+              src: url('/assets/pangram/bitmap/NeueBit-Bold.woff');
+            }
+          `}
+        </style>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
       </>
     );
   }
 }
+
+export default AppExt;
