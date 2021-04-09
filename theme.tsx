@@ -74,6 +74,10 @@ const theme: Theme = merge.all(dark, {
     container: {
       paddingTop: 4,
       paddingBottom: 4,
+
+      borderBottomColor: 'muted',
+      borderBottomWidth: 1,
+      borderBottomStyle: 'solid',
     },
     title: {
       fontSize: 7,
