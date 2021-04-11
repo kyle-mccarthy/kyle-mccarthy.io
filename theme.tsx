@@ -1,17 +1,17 @@
 // import { dark } from '@theme-ui/presets';
-import type { Theme } from 'theme-ui';
-import { TinyColor } from '@ctrl/tinycolor';
-import { dark } from '@theme-ui/presets';
-import { merge } from 'theme-ui';
+import type { Theme as ThemeUITheme } from "theme-ui";
+import { TinyColor } from "@ctrl/tinycolor";
+import { dark } from "@theme-ui/presets";
+import { merge } from "theme-ui";
 
 export const colors = {
-  background: new TinyColor('#1C2227'),
-  text: new TinyColor('#E7E7ED'),
+  background: new TinyColor("#1C2227"),
+  text: new TinyColor("#E7E8ED"),
   // primary: new TinyColor('#F76A75'),
-  primary: new TinyColor('#E44740'),
-  accent: new TinyColor('#FFCA00'),
+  primary: new TinyColor("#E44740"),
+  accent: new TinyColor("#FFCA00"),
 
-  muted: new TinyColor('#586269'),
+  muted: new TinyColor("#3C4853"),
 };
 
 export const pallete = {
@@ -19,10 +19,10 @@ export const pallete = {
   text: colors.text.toHexString(),
   primary: colors.primary.toHexString(),
   accent: colors.accent.toHexString(),
-  muted: colors.background.lighten(15).toHexString(),
+  muted: colors.muted.toHexString(),
 };
 
-const theme: Theme = merge.all(dark, {
+const overrides = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   colors: pallete,
   fonts: {
@@ -36,81 +36,75 @@ const theme: Theme = merge.all(dark, {
   fontSize: {
     body: 16,
   },
+  breakpoints: ["40em", "56em", "64em"],
   styles: {
     root: {
-      fontFamily: 'body',
-      fontWeight: 'body',
-      lineHeight: 'body',
-      fontSize: 'body',
+      fontFamily: "body",
+      fontWeight: "body",
+      lineHeight: "body",
+      fontSize: "16px",
     },
     a: {
       // color: colors.red.toHexString(),
-      display: 'inline-flex',
-      alignItems: 'center',
+      display: "inline-flex",
+      alignItems: "center",
     },
     hr: {
-      color: 'muted',
+      color: "muted",
     },
   },
   layout: {
     container: {
       maxWidth: 1024,
+      ["@media(max-width:1024px)"]: {
+        paddingLeft: 2,
+        paddingRight: 2,
+      },
     },
     body: {
       // background: '#1f1f1f',
-      minHeight: '100vh',
-      display: 'flex',
+      minHeight: "100vh",
+      display: "flex",
     },
     sidebar: {
       // background: '#1a1a1a',
-      padding: '48px 32px',
+      padding: "48px 32px",
       maxWidth: 320,
     },
     content: {
-      margin: '20px 80px',
+      margin: "20px 80px",
     },
   },
-  post: {
-    container: {
-      paddingTop: 4,
-      paddingBottom: 4,
+  svg: {
+    icon: {
+      fill: "currentColor",
+      width: "1em",
+      height: "1em",
+      display: "inline-block",
+      transition: "fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+      flexShrink: 0,
+      userSelect: "none",
+    },
 
-      borderBottomColor: 'muted',
-      borderBottomWidth: 1,
-      borderBottomStyle: 'solid',
+    logo: {
+      fill: pallete.text,
+      width: "47px",
+      height: "38px",
+      display: "inline-block",
+      transition: "fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+      flexShrink: 0,
+      userSelect: "none",
     },
-    title: {
-      fontSize: 7,
-      display: 'block',
-      marginBottom: 3,
-      // color: 'primary',
-      fontFamily: 'heading',
-      lineHeight: 0.85,
-      maxWidth: '600px',
-      color: colors.primary.toRgbString(),
-      textShadow: `3px 3px 0px ${colors.background.lighten(10).toRgbString()}`,
-      // color: colors.accent.toRgbString(),
-      // textShadow: `4px 4px 0px ${colors.primary.toHexString()}`,
-    },
-    meta: {
-      fontSize: 0,
-      marginBottom: 3,
-      display: 'block',
+  },
+  text: {
+    muted: {
       color: colors.text.setAlpha(0.8).toRgbString(),
     },
-    summary: {
-      marginBottom: 3,
-      fontSize: 2,
-      display: 'block',
-    },
-    link: {
-      fontSize: 1,
-      color: 'accent',
-      ['& > a']: {
-        color: 'inherit',
-      },
-    },
   },
-}) as Theme;
+};
+
+const theme = merge.all(dark as ThemeUITheme, overrides);
+
+export type Theme = typeof theme;
 
 export default theme;

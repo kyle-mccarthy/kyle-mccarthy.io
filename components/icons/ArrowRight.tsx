@@ -1,23 +1,17 @@
-// Pixel arrow by Ján Slobodník from the Noun Project
-// Source: https://thenounproject.com/search/?q=arrow+pixel&i=801787
-// License: Creative Commons CC-BY
-// Modifications: This file contains a modified version of the original. The
-// original version was transformed into JSX and optimized.
-
 import { FC, SVGProps } from 'react';
+import { Themed } from 'theme-ui';
 
 const Icon: FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
-    preserveAspectRatio="none"
-    viewBox="0 0 100 100"
     width="1em"
     height="1em"
+    viewBox="0 0 8 10"
+    xmlns="http://www.w3.org/2000/svg"
+    sx={{ variant: 'svg.icon' }}
     {...props}
   >
     <path
-      d="M68 56V44H56v12h12zM56 32H44v12h12V32zm-24 0h12V20H32v12zm12 24v12h12V56H44zm0 12H32v12h12V68z"
+      d="M7.493 6V4H5.029v2h2.464zM5.029 2H2.565v2h2.464V2zM.1 2h2.465V0H.1v2zm2.465 4v2h2.464V6H2.565zm0 2H.1v2h2.465V8z"
       fill="currentColor"
     />
   </svg>

@@ -19,10 +19,13 @@ module.exports = {
   webpack: (config, options) => {
     config.externals = [
       {
-        mdcms: 'commonjs mdcms_node',
+        mdcms: "commonjs mdcms_node",
       },
       ...config.externals,
     ];
     return config;
+  },
+  future: {
+    webpack5: true,
   },
 };

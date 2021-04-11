@@ -1,36 +1,49 @@
-import { FC } from 'react';
-import { Text, Link } from 'theme-ui';
-import PreviewPost from '../components/PreviewPost';
-import { Divider, Grid } from 'theme-ui';
-import Header from '../components/Header';
+import { FC } from "react";
+import { Text, Link } from "theme-ui";
+import PreviewPost from "../components/PreviewPost";
+import { Divider, Grid } from "theme-ui";
+import Header from "./../components/Header";
 
 const Separator: FC = () => (
   <div
     sx={{
-      display: 'flex',
-      alignItems: 'center',
-      flexDirection: 'column',
+      alignItems: "center",
+      flexDirection: "column",
+      flexBasis: "55px",
+      flexShrink: 0,
+      display: [null, "none", "flex"],
     }}
   >
     <div
       sx={{
         maxWidth: 1,
-        backgroundColor: 'muted',
+        backgroundColor: "muted",
         width: 1,
         flexGrow: 1,
-        marginBottom: 3,
-        marginTop: 3,
       }}
     />
   </div>
 );
 
+const Column: FC = ({ children }) => {
+  return (
+    <div
+      sx={{
+        width: [null, "100%", "50%"],
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
 const Home: FC = () => {
   return (
     <div>
-      <Grid gap={2} columns={['1fr 100px 1fr']}>
-        <Header />
-        <Separator />
+      <Header />
+      <Divider sx={{ margin: "50px 0 25px" }} />
+
+      <Grid gap={0} columns={[null, "1fr", "1fr 55px 1fr"]}>
         <PreviewPost
           title="No speeches. Internet."
           summary={
@@ -44,14 +57,14 @@ const Home: FC = () => {
             </p>
           }
         />
-
+        <Separator />
         <PreviewPost
           title="I am the one who knocks."
           summary={
             <>
               <p>
                 Who are you talking to right now? Who is it you think you see?
-                Do you know how much I make a year?{' '}
+                Do you know how much I make a year?{" "}
               </p>
               <p>
                 A business big enough that it could be listed on the NASDAQ goes
@@ -65,8 +78,6 @@ const Home: FC = () => {
           }
         />
 
-        <Separator />
-
         <PreviewPost
           title="Don't you see how great this is?"
           summary={
@@ -74,11 +85,13 @@ const Home: FC = () => {
               <p>
                 The game has changed. The word is out. And you... are a killer.
                 Apparently it's all over town. Somebody crossed you, you got
-                angry, you crushed their skull with an ATM machine.{' '}
+                angry, you crushed their skull with an ATM machine.{" "}
               </p>
             </>
           }
         />
+
+        <Separator />
 
         <PreviewPost
           title="No speeches. Internet."
