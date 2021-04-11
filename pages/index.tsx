@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { Text, Link } from "theme-ui";
-import PreviewPost from "../components/PreviewPost";
 import { Divider, Grid } from "theme-ui";
+import PreviewPost from "../components/PreviewPost";
 import Header from "./../components/Header";
 
 const Separator: FC = () => (

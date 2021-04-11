@@ -1,8 +1,11 @@
-import { FC, useRef, useEffect } from 'react';
-import Particles from 'react-tsparticles';
-import { Container } from 'tsparticles';
+import { FC } from "react";
+import Particles, {
+  ISourceOptions,
+  CollisionMode,
+  DestroyMode,
+} from "react-tsparticles";
 
-const options = {
+const options: ISourceOptions = {
   autoPlay: true,
 
   fullScreen: {
@@ -12,7 +15,7 @@ const options = {
   detectRetina: true,
   fpsLimit: 60,
   interactivity: {
-    detectsOn: 'window',
+    detectsOn: "window" as any,
     events: {
       onClick: {
         enable: false,
@@ -30,9 +33,6 @@ const options = {
         distance: 200,
         duration: 0.4,
         speed: 1,
-      },
-      bounce: {
-        distance: 200,
       },
       bubble: {
         distance: 200,
@@ -57,17 +57,17 @@ const options = {
         area: {
           gradient: {
             start: {
-              value: '#ffffff',
+              value: "#ffffff",
             },
             stop: {
-              value: '#000000',
+              value: "#000000",
             },
           },
           radius: 1000,
         },
         shadow: {
           color: {
-            value: '#000000',
+            value: "#000000",
           },
           length: 2000,
         },
@@ -131,14 +131,14 @@ const options = {
         },
       },
       enable: false,
-      mode: 'bounce',
+      mode: CollisionMode.bounce,
       overlap: {
         enable: true,
         retries: 0,
       },
     },
     color: {
-      value: '#fff',
+      value: "#fff",
       animation: {
         h: {
           count: 0,
@@ -156,7 +156,7 @@ const options = {
       },
     },
     destroy: {
-      mode: 'none',
+      mode: DestroyMode.none,
       split: {
         count: 1,
         factor: {
@@ -183,6 +183,7 @@ const options = {
       delay: {
         random: {
           enable: false,
+          minimumValue: 0.1,
         },
         value: 0,
         sync: false,
@@ -190,6 +191,7 @@ const options = {
       duration: {
         random: {
           enable: false,
+          minimumValue: 0,
         },
         value: 0,
         sync: false,
@@ -198,7 +200,7 @@ const options = {
     links: {
       blink: false,
       color: {
-        value: 'random',
+        value: "random",
       },
       consent: false,
       distance: 100,
@@ -228,7 +230,7 @@ const options = {
       },
       decay: 0,
       distance: 0,
-      direction: 'none',
+      direction: "none",
       drift: 0,
       enable: true,
       gravity: {
@@ -240,11 +242,11 @@ const options = {
         enable: false,
       },
       outModes: {
-        default: 'bounce',
-        bottom: 'bounce',
-        left: 'bounce',
-        right: 'bounce',
-        top: 'bounce',
+        default: CollisionMode.bounce,
+        bottom: CollisionMode.bounce,
+        left: CollisionMode.bounce,
+        right: CollisionMode.bounce,
+        top: CollisionMode.bounce,
       },
       random: false,
       size: false,
@@ -272,9 +274,9 @@ const options = {
         enable: true,
         speed: 0.5,
         sync: false,
-        destroy: 'none',
+        destroy: "none",
         minimumValue: 0.3,
-        startValue: 'random',
+        startValue: "random",
       },
     },
     reduceDuplicates: true,
@@ -292,7 +294,7 @@ const options = {
         speed: 0,
         sync: false,
       },
-      direction: 'clockwise',
+      direction: "clockwise",
       path: false,
     },
     shadow: {
@@ -303,7 +305,7 @@ const options = {
         image: [null],
         images: [null],
       },
-      type: 'circle',
+      type: "circle",
     },
     size: {
       random: {
@@ -319,15 +321,15 @@ const options = {
         enable: true,
         speed: 3,
         sync: false,
-        destroy: 'none',
+        destroy: "none",
         minimumValue: 1,
-        startValue: 'random',
+        startValue: "random",
       },
     },
     stroke: {
       width: 0,
       color: {
-        value: '',
+        value: "",
         animation: {
           h: {
             count: 0,
@@ -369,22 +371,11 @@ const options = {
 };
 
 const Component: FC = () => {
-  // const container = useRef<Container>(
-  //   new Container('particles-instance', options)
-  // );
-  // const ref = useRef<HTMLCanvasElement | null>(null);
-
-  // useEffect(() => {
-  //   if (!container.current.element && ref.current) {
-  //     container.current.canvas.element = ref.current;
-  //   }
-  // }, []);
-
   return (
     <>
       <Particles
         options={options}
-        style={{ position: 'absolute', top: 0, opacity: 0.5 }}
+        style={{ position: "absolute", top: 0, opacity: 0.5 }}
       />
     </>
   );

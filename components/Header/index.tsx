@@ -1,13 +1,16 @@
-import { FC } from "react";
-import { pallete } from "../../theme";
 import Portal from "@reach/portal";
+import { FC } from "react";
 import Particles from "./Particles";
 
 const Header: FC = () => {
-  console.log();
   return (
     <div
-      sx={{ position: "relative", paddingTop: "150px", paddingBottom: "150px" }}
+      sx={{
+        position: "relative",
+        paddingTop: ["50px", "100px", "150px"],
+        paddingBottom: ["50px", "100px", "150px"],
+        transition: "all 0.5s ease",
+      }}
     >
       <Portal>
         <div
@@ -37,6 +40,10 @@ const Header: FC = () => {
               position: "absolute",
               background: `radial-gradient(50% 50% at 50% 50%, #0038FF 0%, #1025E9 0.01%, #0B0B2F 100%)`,
               mixBlendMode: "color",
+              ["@media (max-width: 900px)"]: {
+                left: 0,
+                mixBlendMode: "normal",
+              },
             }}
           />
           <div
@@ -49,18 +56,23 @@ const Header: FC = () => {
               background:
                 "radial-gradient(50% 50% at 50% 50%, #DD11B0 0%, #8D0077 100%)",
               mixBlendMode: "color",
+              maxWidth: "100%",
+              ["@media (max-width: 900px)"]: {
+                right: 0,
+                left: "auto",
+                mixBlendMode: "normal",
+              },
             }}
           />
         </div>
       </Portal>
       <div
         sx={{
-          fontSize: 100,
+          fontSize: [75, 85, 100],
           lineHeight: 0.9,
-          // `3px 0px 0px #E26D3C, 0px -3px 0 #C7AD48, 0px 3px 0px #5498D5`,
-          fontFamily: "Special3",
+          fontFamily: "heading",
           textTransform: "uppercase",
-          //fontVariationSettings: '"wght" 900, "wdth" 104',
+          transition: "all 0.5s ease",
         }}
       >
         Kyle
