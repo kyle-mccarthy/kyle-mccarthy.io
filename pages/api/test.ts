@@ -1,6 +1,6 @@
-import { factory } from "@utils/app";
+import { router } from "@utils/app";
 
-export default factory().post(async (ctx) => {
+export default router().post(async (ctx) => {
   ctx.res.json({
     message: "ok",
   });
