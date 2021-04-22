@@ -1,3 +1,7 @@
-import { bootstrap } from "lib/next-api";
+import { factory, asFunction } from "lib/next-api";
+import avvio from "avvio";
 
-export const { getApp, router } = bootstrap();
+export const getApp = factory((app) => {
+  // app.container.register()
+}, {});
+export const router = getApp.router;
